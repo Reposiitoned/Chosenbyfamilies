@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes — ChosenByFamilies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#0D1B2A;
+    --navy-mid:#1a2e44;
+    --cream:#F9F6F0;
+    --card-bg:#F3EEE3;
+    --white:#ffffff;
+    --coral:#E8674A;
+    --teal:#2A9D8F;
+    --gold:#C9963A;
+    --text-muted:#6b7a8d;
+    --border:#e2ddd6;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);line-height:1.6;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px 80px;}
+  .narrow{max-width:720px;margin:0 auto;}
+
+  /* ── HEADER ── */
+  .page-header{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);
+    margin-bottom:8px;flex-wrap:wrap;gap:16px;}
+  .brand-lockup{display:flex;align-items:center;gap:12px;}
+  .mono-box{width:38px;height:38px;border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .mono-box svg{width:24px;height:24px;display:block;}
+  .brand-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--navy);letter-spacing:.01em;}
+  .brand-name span{color:var(--coral);}
+  .back-link{font-size:13px;color:var(--text-muted);text-decoration:none;}
+  .back-link:hover{color:var(--navy);}
+
+  /* ── TITLE ── */
+  .page-title{padding:48px 0 40px;text-align:center;}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;}
+  .eyebrow::before,.eyebrow::after{content:'';width:28px;height:1.5px;background:var(--teal);}
+  .page-title h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;
+    font-size:clamp(30px,4vw,42px);color:var(--navy);margin-bottom:14px;}
+  .page-title p{font-size:14.5px;color:var(--text-muted);max-width:520px;margin:0 auto;}
+
+  /* ── CARD GRID ── */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px;}
+  .card{background:var(--card-bg);border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;
+    text-decoration:none;transition:transform .15s ease;}
+  .card:hover{transform:translateY(-2px);}
+  .card-tag{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;}
+  .card h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:17.5px;color:var(--navy);line-height:1.35;margin-bottom:12px;}
+  .card p{font-size:13.5px;color:#4a5568;line-height:1.6;flex-grow:1;margin-bottom:18px;}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(13,27,42,.08);}
+  .read-time{font-size:11.5px;color:var(--text-muted);}
+  .read-more{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);
+    text-decoration:none;display:flex;align-items:center;gap:5px;}
+  .card:hover .read-more{color:var(--coral);}
+
+  /* ── FULL ARTICLES ── */
+  .articles-divider{text-align:center;margin-bottom:48px;}
+  .articles-divider span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);}
+  .article{padding:48px 0;border-top:1px solid var(--border);scroll-margin-top:24px;}
+  .article:first-of-type{border-top:none;}
+  .article-tag{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);
+    margin-bottom:14px;text-align:center;}
+  .article h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;font-size:clamp(24px,3vw,30px);
+    color:var(--navy);line-height:1.25;margin-bottom:20px;text-align:center;}
+  .article p{font-size:15px;color:#2c3e50;margin-bottom:16px;}
+  .back-to-top{display:block;text-align:center;margin-top:24px;font-size:12px;color:var(--text-muted);text-decoration:none;}
+  .back-to-top:hover{color:var(--coral);}
+
+  @media(max-width:900px){ .grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .grid{grid-template-columns:1fr;} .page-header{padding:24px 0;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-header">
+    <div class="brand-lockup">
+      <div class="mono-box">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <text x="8" y="72" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="72" fill="#0D1B2A">C</text>
+          <text x="60" y="38" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#0D1B2A">b</text>
+          <line x1="60" y1="46" x2="86" y2="46" stroke="#0D1B2A" stroke-width="3"/>
+          <text x="60" y="76" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#0D1B2A">f</text>
+        </svg>
+      </div>
+      <div class="brand-name">Chosen<span>by</span>Families</div>
+    </div>
+    <a href="landing-page-v3.html" class="back-link">← Back to the Invitation</a>
+  </div>
+
+  <div class="page-title" id="top">
+    <div class="eyebrow">Field Notes</div>
+    <h1>Your Monthly Checklist</h1>
+    <p>One practice per region gets Chosen by Families. If it's not yours, here's what it takes each month to keep pace with the one that is.</p>
+  </div>
+
+  <div class="grid">
+
+    <a href="#article-1" class="card">
+      <div class="card-tag">Strategy</div>
+      <h3>Monthly Review of Your Numbers</h3>
+      <p>Most practices know their revenue. Fewer know where it's actually coming from — or catch a slide before it becomes a slump.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-2" class="card">
+      <div class="card-tag">Strategy</div>
+      <h3>The Monthly Meeting That Actually Changes Something</h3>
+      <p>Having the numbers is only half the job. The other half is knowing what they mean — and what to do about it.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-3" class="card">
+      <div class="card-tag">Marketing</div>
+      <h3>The Importance of Staying Top of Mind</h3>
+      <p>Most patients don't think about their dentist until something hurts. By then, they're not choosing you — they're choosing whoever shows up first.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-4" class="card">
+      <div class="card-tag">Marketing</div>
+      <h3>The Value of the List</h3>
+      <p>Every practice has an asset sitting quietly in its patient system, mostly untouched — and worth more than almost anything spent on ads.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-5" class="card">
+      <div class="card-tag">Content</div>
+      <h3>Content That Nobody Reads Isn't Content — It's Noise</h3>
+      <p>Posting regularly is not the same as posting well. The test is simple: would a patient actually read this, or scroll past it?</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-6" class="card">
+      <div class="card-tag">SEO &amp; GEO</div>
+      <h3>Your Website Now Has a New Audience: AI</h3>
+      <p>Patients aren't only searching Google anymore. Here's what it takes to be found — and recommended — by AI.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-7" class="card">
+      <div class="card-tag">Positioning</div>
+      <h3>Why "Family Friendly" Needs Proof, Not Just a Tagline</h3>
+      <p>Every dental website says it's family friendly. Positioning only works when there's proof behind it — something a competitor can't just copy.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-8" class="card">
+      <div class="card-tag">Content</div>
+      <h3>Stop Talking to Everyone. Start Talking to Families.</h3>
+      <p>"Everyone deserves great dental care" is true, and it's also useless as a message. Here's why specificity gets read.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#article-9" class="card">
+      <div class="card-tag">Trust</div>
+      <h3>Educate, Don't Sell — Mums Can Tell the Difference</h3>
+      <p>There's a specific tone that switches a parent off instantly: the sales voice. Here's what to do instead.</p>
+      <div class="card-foot">
+        <span class="read-time">2 min read</span>
+        <span class="read-more">Read More →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="articles-divider"><span>— Full Articles Below —</span></div>
+
+  <div class="narrow">
+
+    <div class="article" id="article-1">
+      <div class="article-tag">Strategy</div>
+      <h2>Monthly Review of Your Numbers</h2>
+      <p>Most practices know their revenue. Fewer know where it's actually coming from.</p>
+      <p>Are new patients up or down this month, and why? Which channel brought them in — Google, a referral, your website, a friend's recommendation? Is your average visit value climbing or quietly slipping? Are you losing patients after their first appointment, or are they coming back?</p>
+      <p>Without a monthly review, you're not managing a practice — you're reacting to one. Problems get noticed three months too late, once the quiet month has already happened. Wins go unnoticed too, so you can't repeat what worked.</p>
+      <p>It's not complicated, but it isn't quick either. Pulling the numbers together, comparing them to last month and last year, and working out what actually changed takes real time — time most practice owners don't have to spare between patients. Do it properly once a month, though, and you'll catch a slide before it becomes a slump — and know exactly what to do next.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-2">
+      <div class="article-tag">Strategy</div>
+      <h2>The Monthly Meeting That Actually Changes Something</h2>
+      <p>Having the numbers is only half the job. The other half is knowing what they mean — and what to do about it.</p>
+      <p>That's what the monthly meeting with your Chosen by Families marketing team is for. We walk through what moved and what didn't: which content brought in patients, which channel is working harder than the others, where interest is building but bookings aren't following through yet.</p>
+      <p>Then we qualify it. A spike in website visits means nothing on its own — did it turn into calls? Did those calls turn into appointments? We separate the noise from the signal, so you're not chasing numbers that look good but don't actually grow the practice.</p>
+      <p>And then we plan forward. Not a vague "let's keep doing what we're doing" — a specific next month, built on what this month actually taught us and the time of year.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-3">
+      <div class="article-tag">Marketing</div>
+      <h2>The Importance of Staying Top of Mind</h2>
+      <p>Most patients don't think about their dentist until something hurts. That's a problem, because by the time they're searching, they're not choosing you — they're choosing whoever shows up first.</p>
+      <p>Top of mind awareness is what happens between appointments. It's the practice a family thinks of when a friend asks for a recommendation, when their child mentions a sore tooth, when they're finally ready to book that whitening they've been putting off. Not because that practice shouted the loudest, but because it stayed visible — in their inbox, on their feed, in the community — without being pushy about it.</p>
+      <p>The practices that win aren't necessarily the best clinically. They're the ones patients remember exist. Six months of silence and even a happy patient will Google a stranger before they think to call you.</p>
+      <p>Staying visible isn't a nice-to-have. It's the difference between being chosen and being forgotten.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-4">
+      <div class="article-tag">Marketing</div>
+      <h2>The Value of the List</h2>
+      <p>Every practice has an asset sitting quietly in its patient management system, mostly untouched. It's the list — every patient who's ever walked through the door, with a name, a history, and hopefully a way to reach them.</p>
+      <p>Most practices treat it as a records system. It's actually a marketing asset, and one worth more than almost anything spent on ads. Every patient on that list already trusts you enough to sit in your chair. They don't need convincing — they need reminding.</p>
+      <p>The problem is, most lists rot quietly. Emails bounce. Families move suburbs and never mention it. A child ages out of a paediatric offer and nobody updates the record. Two years later, half the list can't be reached at all — right when a quiet month arrives and you need them most.</p>
+      <p>Keeping the list current, with accurate email contact for every patient, isn't admin. It's the difference between having thousands of warm relationships on tap, and having a folder full of names you can no longer use.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-5">
+      <div class="article-tag">Content</div>
+      <h2>Content That Nobody Reads Isn't Content — It's Noise</h2>
+      <p>Most dental social media looks the same: a stock photo of a smile, a caption about "healthy teeth," posted because someone said the practice needed to be active online. It fills the feed. It doesn't move anyone.</p>
+      <p>Engaging content isn't about being clever or trying to go viral. It's about being useful or human enough that a parent stops scrolling. A real answer to "is my child's jaw growing normally?" A quick, honest explainer on white spots on teeth. A photo of your actual team, not a stock one.</p>
+      <p>The test is simple: would a patient actually read this, or would they scroll straight past it? If the answer is scroll, it doesn't matter how consistently it's posted — it isn't doing anything for the practice.</p>
+      <p>Posting regularly is not the same as posting well. A practice that shows up once a week with something genuinely worth reading will always outperform one posting daily into the void.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-6">
+      <div class="article-tag">SEO &amp; GEO</div>
+      <h2>Your Website Now Has a New Audience: AI</h2>
+      <p>For years, ranking well meant writing for Google. That's still true — but increasingly, patients aren't searching Google first. They're asking ChatGPT "what's the best family dentist near me" or asking an AI assistant to explain a symptom, and getting an answer with practices already recommended inside it.</p>
+      <p>This is called Generative Engine Optimization, or GEO — making sure AI tools can actually find, understand, and recommend your practice. It rewards different things than traditional SEO. Clear, well-structured answers to real questions. Genuine expertise, not keyword-stuffed pages. Content that reads like it was written by a dentist, not written to trick a search algorithm.</p>
+      <p>A website that hasn't been touched in two years isn't just old — it's invisible to a growing number of the ways families are actually searching now. The practices showing up in AI-generated answers today are the ones already writing for it. The ones who wait will spend years catching up to a head start that didn't cost anything to take.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-7">
+      <div class="article-tag">Positioning</div>
+      <h2>Why "Family Friendly" Needs Proof, Not Just a Tagline</h2>
+      <p>Every dental website says it's family friendly. It's on the homepage, in the meta description, probably on a banner in the waiting room. And because every practice says it, it means almost nothing to a parent trying to choose one.</p>
+      <p>Positioning only works when there's proof behind it — something a competitor can't just copy by changing a headline. That's the reward of a quarterly magazine done properly. It's not a claim, it's evidence. A parent doesn't read "we're great with kids" and believe it. They read a real article on managing dental anxiety in a nervous seven-year-old, published under your name, and they believe it because you clearly know what you're talking about.</p>
+      <p>A tagline can be copied in an afternoon. A magazine with a year of genuinely useful, family-specific content behind it can't be — and that's exactly why it works. It's proof a practice actually understands families, not just markets to them.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-8">
+      <div class="article-tag">Content</div>
+      <h2>Stop Talking to Everyone. Start Talking to Families.</h2>
+      <p>"Everyone deserves great dental care" is true, and it's also useless as a message. Content written for everyone is felt by no one — it's too broad to make any single reader feel like it was written for them.</p>
+      <p>A busy parent scrolling at 9pm isn't thinking about dental care in general. They're thinking about their specific kid, their specific worry — a wobbly tooth, a school-morning meltdown over brushing, whether that filling is really necessary. Content that speaks to that parent, in that exact moment, gets read. Content aimed at a generic audience gets scrolled past.</p>
+      <p>This means writing like you're talking to one family, not broadcasting to a suburb. Use "your child," not "children." Answer the question a parent is actually Googling at midnight, not the one that sounds professional in a brochure.</p>
+      <p>The practices patients remember aren't the ones that spoke to everyone. They're the ones that made one tired parent feel truly understood.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+    <div class="article" id="article-9">
+      <div class="article-tag">Trust</div>
+      <h2>Educate, Don't Sell — Mums Can Tell the Difference</h2>
+      <p>There's a specific tone that switches a parent off instantly: the sales voice. "Book now for our limited-time offer" lands very differently coming from a dental practice than it does from a clothing brand, and mums notice the difference immediately.</p>
+      <p>A parent researching a wobbly tooth or a teenager's braces isn't in buying mode — they're in worried, information-gathering mode. Content that pushes straight to a sale in that moment reads as tone-deaf, and worse, it reads as more interested in the booking than the child.</p>
+      <p>Education earns trust first. Explain what white spots on teeth actually mean before mentioning a treatment. Answer whether a jaw is growing normally before ever suggesting an appointment. Let the expertise speak, and let the parent arrive at "I should book this" on their own — because they understand the problem, not because they were told to.</p>
+      <p>The sell still happens. It just happens second, after trust, not instead of it.</p>
+      <a href="#top" class="back-to-top">↑ Back to Field Notes</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

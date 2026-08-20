@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Invitation — ChosenByFamilies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#0D1B2A;
+    --navy-mid:#1a2e44;
+    --cream:#F9F6F0;
+    --white:#ffffff;
+    --coral:#E8674A;
+    --teal:#2A9D8F;
+    --gold:#C9963A;
+    --text-muted:#6b7a8d;
+    --border:#e2ddd6;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);line-height:1.6;}
+  .wrap{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 2px 60px rgba(13,27,42,0.08);}
+
+  /* ── STANDALONE BRAND HEADER ── */
+  .brand-header{background:var(--navy);padding:56px 40px 40px;display:flex;flex-direction:column;
+    align-items:center;text-align:center;position:relative;overflow:hidden;}
+  .brand-header::before{content:'';position:absolute;top:-120px;left:-80px;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,150,58,.10) 0%,transparent 70%);}
+  .mono-box-lg{position:relative;width:84px;height:84px;border:2.5px solid var(--gold);display:flex;
+    align-items:center;justify-content:center;margin-bottom:22px;}
+  .mono-box-lg svg{width:56px;height:56px;display:block;}
+  .brand-name-lg{position:relative;font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;
+    font-size:32px;color:var(--white);}
+  .brand-name-lg span{color:var(--gold);}
+  .brand-sub{position:relative;margin-top:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(255,255,255,.55);}
+
+  /* ── HERO / TAGLINE ── */
+  .hero{background:var(--navy);padding:8px 56px 64px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,103,74,.12) 0%,transparent 70%);}
+  .hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;
+    font-size:clamp(30px,4vw,42px);color:var(--white);line-height:1.2;max-width:640px;margin:32px auto 20px;text-align:center;}
+  .hero h1 em{color:var(--coral);font-style:italic;}
+  .hero p{position:relative;font-size:15.5px;font-weight:300;color:rgba(255,255,255,.68);max-width:540px;
+    margin:0 auto;text-align:center;}
+  .practice-tag{position:relative;display:block;width:fit-content;margin:28px auto 0;padding:8px 18px;
+    border:1px solid rgba(201,150,58,.4);border-radius:100px;font-size:12.5px;color:var(--gold);letter-spacing:.03em;}
+
+  /* ── LETTER BODY ── */
+  .body{padding:56px 56px 8px;}
+  .letter p{font-size:15.5px;color:#2c3e50;margin-bottom:18px;max-width:720px;}
+  .letter strong{color:var(--navy);}
+
+  /* ── QUIET MONTHS BANNER ── */
+  .quiet-banner{margin:44px 0;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);
+    border-radius:6px;padding:36px 40px;color:var(--white);position:relative;overflow:hidden;}
+  .quiet-banner::after{content:'';position:absolute;top:0;right:0;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(232,103,74,.18) 0%,transparent 70%);}
+  .quiet-label{position:relative;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:10px;}
+  .quiet-title{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,32px);
+    font-weight:600;line-height:1.25;max-width:600px;margin-bottom:14px;}
+  .quiet-sub{position:relative;font-size:13.5px;color:rgba(255,255,255,.6);max-width:560px;}
+  .quiet-sub b{color:var(--coral);}
+
+  /* ── STATS GRID ── */
+  .section-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;
+    display:flex;align-items:center;gap:10px;margin:48px 0 24px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px;}
+  .stat-card{background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:20px 16px;text-align:center;}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:30px;color:var(--navy);line-height:1;}
+  .stat-num span{color:var(--coral);}
+  .stat-label{font-size:11px;color:var(--text-muted);margin-top:8px;line-height:1.4;}
+  .plain-translation{font-size:14px;color:var(--navy);background:var(--cream);border-left:3px solid var(--teal);
+    padding:14px 18px;margin-bottom:20px;line-height:1.55;}
+  .plain-translation strong{color:var(--navy);}
+
+  /* ── GROWTH CHARTS ── */
+  .growth-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px;}
+  .growth-card{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:24px 22px 18px;}
+  .growth-card h4{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--navy);margin-bottom:2px;}
+  .growth-card .sub{font-size:11.5px;color:var(--text-muted);margin-bottom:18px;}
+  .legend-mini{display:flex;gap:16px;margin-bottom:16px;}
+  .legend-mini span{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--text-muted);}
+  .legend-dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
+  .legend-dot.before{background:#B8C2CF;}
+  .legend-dot.after{background:var(--coral);}
+
+  .metric-row{display:flex;justify-content:space-around;align-items:flex-end;gap:10px;}
+  .metric{display:flex;flex-direction:column;align-items:center;flex:1;}
+  .metric-label{font-size:10.5px;color:var(--text-muted);margin-top:8px;text-align:center;line-height:1.3;min-height:26px;}
+  .bar-pair{display:flex;align-items:flex-end;gap:4px;height:120px;}
+  .bar{width:20px;border-radius:3px 3px 0 0;position:relative;display:flex;justify-content:center;}
+  .bar.before{background:#B8C2CF;}
+  .bar.after{background:var(--coral);}
+  .bar-value{position:absolute;top:-20px;font-size:10.5px;font-weight:700;color:var(--navy);white-space:nowrap;}
+
+  .single-metric .bar{width:64px;}
+  .single-metric .bar-pair{height:140px;gap:14px;justify-content:center;}
+  .single-metric .bar-value{font-size:13px;}
+
+  /* ── MAGAZINE BANNER ── */
+  .magazine-banner{margin:44px 0;background:var(--navy);border-radius:8px;overflow:hidden;
+    display:grid;grid-template-columns:200px 1fr;align-items:center;}
+  .magazine-copy{padding:28px 36px 28px 22px;color:var(--white);}
+  .magazine-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px;}
+  .magazine-copy h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2.8vw,28px);
+    color:var(--white);margin-bottom:12px;line-height:1.25;}
+  .magazine-copy p{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.6;}
+  .magazine-placeholder{padding:24px;display:flex;justify-content:center;align-items:center;}
+  .magazine-placeholder-box{width:100%;max-width:150px;aspect-ratio:3/4;border:1px dashed rgba(255,255,255,.3);
+    border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.4);
+    text-align:center;padding:10px;}
+
+  /* ── WHAT WE DID ── */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:12px;}
+  .pillar{padding:22px 20px;border-left:2px solid var(--teal);background:var(--cream);border-radius:0 6px 6px 0;}
+  .pillar h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--navy);margin-bottom:8px;}
+  .pillar p{font-size:13px;color:var(--text-muted);line-height:1.55;}
+
+  /* ── TESTIMONIAL ── */
+  .testimonial{margin:48px 0;padding:36px 40px;background:var(--cream);border-radius:6px;border-left:3px solid var(--gold);position:relative;}
+  .testimonial-mark{font-family:'Cormorant Garamond',serif;font-size:60px;color:var(--gold);opacity:.35;line-height:0;
+    position:absolute;top:24px;left:28px;}
+  .testimonial blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--navy);
+    line-height:1.5;padding-left:36px;margin-bottom:14px;}
+  .testimonial cite{padding-left:36px;font-style:normal;font-size:12.5px;color:var(--text-muted);}
+
+  /* ── EXCLUSIVITY / WHY YOU ── */
+  .offer{margin:48px 0 24px;padding:40px;background:var(--navy);border-radius:6px;color:var(--white);text-align:center;}
+  .offer h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,3vw,30px);margin-bottom:14px;}
+  .offer p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:560px;margin:0 auto;line-height:1.65;}
+
+  /* ── PRICING CARD ── */
+  .pricing{margin:0 0 48px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .pricing-main{padding:32px 40px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px;
+    background:var(--cream);}
+  .pricing-info{flex:1;min-width:240px;}
+  .pricing-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:8px;}
+  .pricing-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--navy);margin-bottom:6px;}
+  .pricing-note{font-size:12.5px;color:var(--text-muted);}
+  .pricing-amount{text-align:right;flex-shrink:0;}
+  .pricing-amount .price{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:38px;color:var(--navy);line-height:1;}
+  .pricing-amount .period{font-size:13px;color:var(--text-muted);margin-top:4px;}
+  .pricing-includes{padding:28px 40px;background:var(--white);}
+  .pricing-includes-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+    font-weight:600;margin-bottom:16px;}
+  .includes-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;}
+  .includes-list li{font-size:13.5px;color:#2c3e50;line-height:1.5;padding-left:22px;position:relative;}
+  .includes-list li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700;}
+  .pricing-upgrade{padding:24px 40px;background:var(--navy-mid);display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:16px;}
+  .upgrade-copy{flex:1;min-width:220px;}
+  .upgrade-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+  .upgrade-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--white);}
+  .upgrade-sub{font-size:12.5px;color:rgba(255,255,255,.55);margin-top:4px;}
+
+  /* ── FOOTER ── */
+  .footer{padding:32px 56px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    border-top:1px solid var(--border);}
+  .footer-brand{display:flex;align-items:center;gap:14px;}
+  .mono-box{width:42px;height:42px;border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .mono-box svg{width:26px;height:26px;display:block;}
+  .footer-brand-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--navy);letter-spacing:.01em;}
+  .footer-brand-name span{color:var(--coral);}
+  .cta-btn{display:inline-block;padding:13px 28px;background:var(--coral);color:var(--white);text-decoration:none;
+    border-radius:100px;font-size:13.5px;font-weight:600;letter-spacing:.02em;}
+
+  @media(max-width:640px){
+    .brand-header,.hero,.body,.footer{padding-left:24px;padding-right:24px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .pillars{grid-template-columns:1fr;}
+    .growth-grid{grid-template-columns:1fr;}
+    .magazine-banner{grid-template-columns:1fr;text-align:center;}
+    .magazine-copy{padding:0 24px 28px;}
+    .pricing-main{flex-direction:column;}
+    .pricing-amount{text-align:left;}
+    .includes-list{grid-template-columns:1fr;}
+    .pricing-upgrade{text-align:center;justify-content:center;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- STANDALONE BRAND HEADER -->
+  <div class="brand-header">
+    <div class="mono-box-lg">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <text x="8" y="72" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="72" fill="#C9963A">C</text>
+        <text x="60" y="38" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#C9963A">b</text>
+        <line x1="60" y1="46" x2="86" y2="46" stroke="#C9963A" stroke-width="3"/>
+        <text x="60" y="76" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#C9963A">f</text>
+      </svg>
+    </div>
+    <div class="brand-name-lg">Chosen<span>by</span>Families</div>
+    <div class="brand-sub">A Partnership Invitation</div>
+  </div>
+
+  <!-- HERO / TAGLINE -->
+  <div class="hero">
+    <h1>Families Choose You. <em>Then They Tell Their Friends.</em></h1>
+    <p>Most dental marketing only gets attention when the schedule is quiet. That's exactly why it stops working.</p>
+    <div class="practice-tag">Now enrolling in your region</div>
+  </div>
+
+  <div class="body">
+    <div class="letter">
+      <p>Marketing in a dental practice is usually the first thing dropped when the schedule fills up — and the first thing panicked over once it empties out. It gets handed to whoever has five minutes: the owner, the practice manager, or an agency working without a real brief. It's rarely targeted, and it's almost never written for the people actually reading it.</p>
+      <p>Your practice deserves more than an afterthought — which is why we only take on <strong>one dental practice per region</strong>, and give it the attention a real growth channel needs.</p>
+      <p>We've worked with <strong>Vivid Dental</strong> in Sydney for the past 12 months. Here's what that focus produced.</p>
+    </div>
+
+    <div class="quiet-banner">
+      <div class="quiet-label">The Result</div>
+      <div class="quiet-title">Their best December and best July on record — the two months that are usually their quietest.</div>
+      <div class="quiet-sub">And it happened while <b>two new dental practices opened in their exact suburb</b> during the same period.</div>
+    </div>
+
+    <div class="section-label">Results at a Glance</div>
+    <div class="plain-translation"><strong>What this actually means:</strong> more local families finding Vivid Dental online, reading their content, and booking appointments.</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num"><span>1,600</span>%</div><div class="stat-label">Instagram Views Growth</div></div>
+      <div class="stat-card"><div class="stat-num"><span>852</span>%</div><div class="stat-label">Instagram Reach Growth</div></div>
+      <div class="stat-card"><div class="stat-num"><span>208</span>%</div><div class="stat-label">Facebook Interaction Growth</div></div>
+      <div class="stat-card"><div class="stat-num"><span>92</span>%</div><div class="stat-label">Facebook Page Visits Growth</div></div>
+    </div>
+
+    <div class="section-label">Growth Across Every Channel</div>
+    <div class="plain-translation"><strong>What this actually means:</strong> their website, blog, and social pages all went from quiet to busy — more people finding them, more people sticking around once they land there.</div>
+    <div class="growth-grid">
+
+      <div class="growth-card">
+        <h4>Website Traffic</h4>
+        <div class="sub">Average monthly visitors</div>
+        <div class="legend-mini">
+          <span><i class="legend-dot before"></i>Before</span>
+          <span><i class="legend-dot after"></i>Now</span>
+        </div>
+        <div class="metric-row single-metric">
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:25%"><span class="bar-value">300&ndash;400</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">1,200&ndash;1,600</span></div>
+            </div>
+            <div class="metric-label">Monthly Visitors</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="growth-card">
+        <h4>Blog Readership</h4>
+        <div class="sub">Average monthly blog visits</div>
+        <div class="legend-mini">
+          <span><i class="legend-dot before"></i>Before</span>
+          <span><i class="legend-dot after"></i>Now</span>
+        </div>
+        <div class="metric-row single-metric">
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:18%"><span class="bar-value">40&ndash;50</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">200&ndash;300</span></div>
+            </div>
+            <div class="metric-label">Monthly Blog Visits</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="growth-card">
+        <h4>Facebook Growth</h4>
+        <div class="sub">Aug 2024&ndash;Aug 2025 vs. Aug 2025&ndash;Aug 2026</div>
+        <div class="legend-mini">
+          <span><i class="legend-dot before"></i>Aug '24&ndash;'25</span>
+          <span><i class="legend-dot after"></i>Aug '25&ndash;'26</span>
+        </div>
+        <div class="metric-row">
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:23%"><span class="bar-value">116</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">505</span></div>
+            </div>
+            <div class="metric-label">Content<br>Interactions</div>
+          </div>
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:70%"><span class="bar-value">1.4K</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">2K</span></div>
+            </div>
+            <div class="metric-label">Page<br>Visits</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="growth-card">
+        <h4>Instagram Growth</h4>
+        <div class="sub">Aug 2024&ndash;Aug 2025 vs. Aug 2025&ndash;Aug 2026</div>
+        <div class="legend-mini">
+          <span><i class="legend-dot before"></i>Aug '24&ndash;'25</span>
+          <span><i class="legend-dot after"></i>Aug '25&ndash;'26</span>
+        </div>
+        <div class="metric-row">
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:8%"><span class="bar-value">319</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">4.3K</span></div>
+            </div>
+            <div class="metric-label">Reach</div>
+          </div>
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:2%"><span class="bar-value">0</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">156</span></div>
+            </div>
+            <div class="metric-label">Content<br>Interactions</div>
+          </div>
+          <div class="metric">
+            <div class="bar-pair">
+              <div class="bar before" style="height:56%"><span class="bar-value">282</span></div>
+              <div class="bar after" style="height:100%"><span class="bar-value">504</span></div>
+            </div>
+            <div class="metric-label">Profile<br>Visits</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-label">What We Actually Did</div>
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Educational, Expertise-Led Content</h3>
+        <p>We moved away from generic posts and built content around the real, everyday problems their patients were facing — showcasing the practice's expertise in a way families could relate to.</p>
+      </div>
+      <div class="pillar">
+        <h3>A Magazine That Built Authority</h3>
+        <p>We launched a dedicated local magazine positioning them as the go-to family and children's dental authority in their region — content no competitor had.</p>
+      </div>
+      <div class="pillar">
+        <h3>SEO & Geo-Targeted Blogs</h3>
+        <p>We wrote blogs targeting the exact searches local families were already typing into Google — driving new organic traffic straight from search.</p>
+      </div>
+    </div>
+
+    <div class="magazine-banner">
+      <div class="magazine-placeholder">
+        <img src="magazine-cover.png" alt="My Kids Dentist magazine cover, Vivid Dental" style="width:100%;max-width:150px;border-radius:4px;box-shadow:0 12px 30px rgba(0,0,0,.35);display:block;">
+      </div>
+      <div class="magazine-copy">
+        <div class="magazine-label">Owned Media, Not Just Social Posts</div>
+        <h3>We launched a digital magazine for families called "My Kids Dentist", that positioned Vivid Dental as the local authority.</h3>
+        <p>Practical advice, expert tips, and answers to the questions parents actually ask — published under Vivid Dental's name, shared with their community, and impossible for a competitor to copy overnight. It's the kind of content asset a family dental practice can build a reputation on for years. This increased their bookings across all services in the practice.</p>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial-mark">&ldquo;</div>
+      <blockquote>I've been running Vivid Dental for over 15 years and last December was our best month ever. I honestly didn't expect marketing to make that kind of difference — but the consistency of the content, the newsletter, the social media — it all added up. Our patients comment on it, new patients tell us they found us online, and I feel like the practice finally has a professional presence that matches the quality of care we provide. I wouldn't hesitate to recommend this program to any dental practice serious about growing.</blockquote>
+      <cite>— Caroline, Owner, Vivid Dental</cite>
+    </div>
+
+    <div class="offer">
+      <p>Vivid Dental said yes twelve months ago — and their best December <em>and</em> best July on record are the result. We're only bringing this program to <strong style="color:#fff;">one practice per region</strong>, and we're actively speaking with practices in your area right now. If that opportunity goes to someone else, it's gone.<br><br>This program isn't for every practice — it's for the ones where families genuinely come first. Let's spend ten minutes and find out if that's you.</p>
+    </div>
+
+    <div class="pricing">
+      <div class="pricing-main">
+        <div class="pricing-info">
+          <div class="pricing-label">The Program</div>
+          <div class="pricing-name">Chosen by Families</div>
+          <div class="pricing-note">One practice per region. Month to month, no lock-in contract. Not getting value? Stop anytime.</div>
+        </div>
+        <div class="pricing-amount">
+          <div class="price">$1,250 <span style="font-size:16px;font-weight:600;">+ GST</span></div>
+          <div class="period">per month</div>
+        </div>
+      </div>
+      <div class="pricing-includes">
+        <div class="pricing-includes-label">What's Included</div>
+        <ul class="includes-list">
+          <li>Monthly reporting, review &amp; strategy meeting — we walk you through what's working, and next recommendations in plain English</li>
+          <li>Fresh, relevant content for your website every month</li>
+          <li>Ongoing social media content built around your practice</li>
+          <li>A quarterly newsletter sent to your existing patients, with offers and promotions to keep them coming back</li>
+        </ul>
+      </div>
+      <div class="pricing-upgrade">
+        <div class="upgrade-copy">
+          <div class="upgrade-label">Optional Upgrade</div>
+          <div class="upgrade-title">My Kids Dentist Magazine</div>
+          <div class="upgrade-sub">Your own branded, quarterly-published magazine — the local authority piece competitors can't copy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plain-translation" style="margin-bottom:48px;">
+      <strong>One practice per region gets this.</strong> If it's not yours, here's your monthly checklist to keep pace with the one that is. <a href="field-notes.html" style="color:var(--coral);font-weight:600;text-decoration:none;">Read Field Notes →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      <div class="mono-box">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <text x="8" y="72" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="72" fill="#0D1B2A">C</text>
+          <text x="60" y="38" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#0D1B2A">b</text>
+          <line x1="60" y1="46" x2="86" y2="46" stroke="#0D1B2A" stroke-width="3"/>
+          <text x="60" y="76" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="26" fill="#0D1B2A">f</text>
+        </svg>
+      </div>
+      <div class="footer-brand-name">Chosen<span>by</span>Families</div>
+    </div>
+    <a href="#" class="cta-btn">Request Your Invitation</a>
+  </div>
+
+</div>
+</body>
+</html>
