@@ -51,6 +51,24 @@
   .practice-tag:hover{background:rgba(201,150,58,.12);}
   .practice-tag .tag-sub{opacity:.65;font-size:11px;}
 
+  /* ── ENROLLMENT BLOCK ── */
+  .enroll-block{position:relative;display:flex;flex-direction:column;align-items:center;margin:28px auto 0;}
+  .enroll-pill{display:block;width:fit-content;padding:10px 22px;border:1px solid rgba(201,150,58,.4);
+    border-radius:100px;font-size:12.5px;color:var(--gold);letter-spacing:.03em;}
+  .enroll-pill b{font-weight:700;}
+  .region-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;justify-content:center;}
+  .region-chip{padding:7px 16px;border:1px solid rgba(255,255,255,.16);border-radius:100px;
+    font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+  .region-chip.open{border-color:var(--gold);color:var(--gold);background:rgba(201,150,58,.1);}
+  .apply-btn{display:inline-block;margin-top:22px;padding:12px 30px;background:var(--coral);color:var(--white);
+    text-decoration:none;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.03em;
+    transition:opacity .15s ease;}
+  .apply-btn:hover{opacity:.88;}
+  @media(max-width:640px){
+    .region-row{gap:8px;}
+    .region-chip{font-size:10.5px;padding:6px 13px;}
+  }
+
   /* ── LETTER BODY ── */
   .body{padding:56px 56px 8px;}
   .letter p{font-size:15.5px;color:#2c3e50;margin-bottom:18px;max-width:720px;}
@@ -224,7 +242,15 @@
   <div class="hero">
     <h1>Families Choose You. <em>Then They Tell Their Friends.</em></h1>
     <p>Most dental marketing only gets attention when the schedule is quiet. That's exactly why it stops working.</p>
-    <a href="#learn-more" class="practice-tag">Now enrolling in your region <span class="tag-sub">— Learn More ↓</span></a>
+    <div class="enroll-block">
+      <div class="enroll-pill">Now enrolling in <b>The Gold Coast, Queensland</b></div>
+      <div class="region-row">
+        <span class="region-chip open">Northern Region</span>
+        <span class="region-chip open">Central Region</span>
+        <span class="region-chip open">South Region</span>
+      </div>
+      <a href="https://calendly.com/roy_west/chosen-by-families" class="apply-btn">Apply Now</a>
+    </div>
   </div>
 
   <div class="body" id="learn-more">
